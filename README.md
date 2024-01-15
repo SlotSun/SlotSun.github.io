@@ -2,4 +2,5 @@
 
 <img align="right" src="https://github-readme-stats.vercel.app/api?username=SlotSun&show_icons=true&hide_title=true" />
 
-my github  pages
+### Hi there is SlotSun 👋
+### 有道无术术可求，有术无道止于术
