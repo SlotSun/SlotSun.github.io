@@ -19,25 +19,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Cache NPM dependencies
-        uses: actions/cache@v4
-        with:
-          path: /blog/node_modules
-          key: ${{ runner.OS }}-npm-cache
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache
-      - name: Install Dependencies
-        run: |
-          cd blog
-          npm install -g pnpm && pnpm install
+          cache: "pnpm"
 
-      - name: hexo generate
+      - name: Install Dependencies
+        working-directory: blog
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: Build (Hexo generate)
+        working-directory: blog
         run: pnpm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: /blog/public
+          path: blog/public
+
   deploy:
     needs: build
     permissions:
