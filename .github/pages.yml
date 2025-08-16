@@ -31,6 +31,10 @@ jobs:
         working-directory: blog
         run: pnpm run build
 
+      - name: Create .nojekyll
+        working-directory: blog/public
+        run: echo "" > .nojekyll
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
