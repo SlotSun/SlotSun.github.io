@@ -25,15 +25,11 @@ jobs:
         working-directory: blog
         run: |
           npm install -g pnpm
-          pnpm install
+          pnpm install .
 
       - name: Build (Hexo generate)
         working-directory: blog
         run: pnpm run build
-
-      - name: Create .nojekyll
-        working-directory: blog/public
-        run: echo "" > .nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
