@@ -7,18 +7,17 @@ on:
 
 jobs:
   build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.token }}
-          # If your repository depends on submodule, please see: https://github.com/actions/checkout
-          submodules: recursive
+
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          # Examples: 20, 18.19, >=16.20.2, lts/Iron, lts/Hydrogen, *, latest, current, node
-          # Ref: https://github.com/actions/setup-node#supported-version-syntax
           node-version: "22"
       - name: Cache NPM dependencies
         uses: actions/cache@v4
@@ -29,11 +28,12 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: |
-          npm install -g pnpm
           cd blog
-          pnpm install
-      - name: Build
+          npm install -g pnpm && pnpm install
+
+      - name: hexo generate
         run: pnpm run build
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
