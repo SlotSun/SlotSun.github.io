@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* novel.css - 小说对白样式 */
+.example p {
+  margin: 1;
+  text-indent: -2ch; /* 首行回退 */
+  padding-left: 2ch; /* 整段右移 */
+  line-height: 1.8;
+}
+
+.dialog p {
+  margin: 0 0 1em 0;
+  padding-left: 12ch;
+  line-height: 1.8;
+  text-indent: -6ch;
+}
+.dialog .jp-name {
+  display: inline-block;
+  font-family: "Noto Sans JP", monospace;
+  width: 4ch;
+  text-align: left;
+  font-weight: bold;
+}
+.dialog .jp-name.len1::after {
+  content: "";
+  display: inline-block;
+  width: 3ch;
+}
+.dialog .jp-name.len2::after {
+  content: "";
+  display: inline-block;
+  width: 2ch;
+}
+.dialog .jp-name.len3::after {
+  content: "";
+  display: inline-block;
+  width: 1ch;
+}
+.dialog .jp-name.len4::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+}
