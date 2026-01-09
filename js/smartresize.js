@@ -13,7 +13,7 @@
                 }
 
                 timeout = null;
-            }
+            };
 
             if (timeout) {
                 clearTimeout(timeout);
